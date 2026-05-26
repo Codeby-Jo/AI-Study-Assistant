@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ai-study-assistant
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: JWT_EXPIRE_HOURS
+        value: "24"
+      - key: DATABASE_URL
+        value: sqlite:///./study_assistant.db

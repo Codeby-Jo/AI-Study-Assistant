@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Study Assistant — Generate Flashcards & Quizzes from Your Notes</title>
+  <meta name="description" content="Upload lecture notes or PDFs and get AI-generated flashcards and quiz questions to study smarter." />
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Auth Page ─────────────────────────────────────────────────── -->
+  <div id="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <span class="logo-icon">🧠</span>
+        <h1>StudyAI</h1>
+        <p>Upload notes. Get flashcards. Ace the exam.</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Log In</button>
+        <button class="auth-tab" data-tab="register">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" placeholder="Your password" required autocomplete="current-password" />
+        </div>
+        <div id="login-msg" class="msg"></div>
+        <button id="login-btn" class="btn btn-primary" type="submit">Log In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="hidden">
+        <div class="form-group">
+          <label for="reg-email">Email</label>
+          <input id="reg-email" type="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input id="reg-password" type="password" placeholder="Min. 8 characters" required autocomplete="new-password" minlength="8" />
+        </div>
+        <div id="register-msg" class="msg"></div>
+        <button id="register-btn" class="btn btn-primary" type="submit">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Main App ───────────────────────────────────────────────────── -->
+  <div id="main-app" class="hidden">
+    <nav class="topbar">
+      <div class="topbar-brand" id="brand-btn">
+        <span>🧠</span>
+        <span class="brand-text">StudyAI</span>
+      </div>
+      <div class="topbar-right">
+        <span class="user-email" id="user-email-display"></span>
+        <button id="logout-btn" class="btn btn-secondary btn-sm">Log out</button>
+      </div>
+    </nav>
+
+    <main class="content">
+
+      <!-- Dashboard View -->
+      <div id="dashboard-view">
+        <div class="dashboard-header">
+          <h2>My Documents</h2>
+        </div>
+
+        <!-- Upload Zone -->
+        <div class="upload-zone" id="upload-zone">
+          <span class="upload-icon">☁️</span>
+          <p><strong>Click to upload</strong> or drag and drop</p>
+          <p>PDF or TXT · Max 20 MB</p>
+        </div>
+        <input type="file" id="file-input" accept=".pdf,.txt" />
+
+        <!-- Document Grid -->
+        <div class="doc-grid" id="doc-grid">
+          <div class="empty-state">
+            <div class="empty-icon">📚</div>
+            <p>No documents yet.<br />Upload a PDF or text file to get started.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Document Detail View -->
+      <div id="doc-view" class="hidden"></div>
+
+    </main>
+  </div>
+
+  <!-- ── Generating Overlay ─────────────────────────────────────────── -->
+  <div id="generating-overlay" class="generating-overlay hidden">
+    <div class="big-spinner"></div>
+    <div>
+      <strong>✨ Generating Study Material</strong>
+      <p>The AI is reading your document and creating flashcards and quiz questions…</p>
+    </div>
+  </div>
+
+  <!-- ── Toast Container ───────────────────────────────────────────── -->
+  <div id="toast-container" class="toast-container"></div>
+
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
