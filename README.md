@@ -1,10 +1,4 @@
-# 🧠 AI Study Assistant
-
-> **Live URL:** `https://your-app-name.onrender.com` ← update after deployment
-
-Upload lecture notes or textbook chapters (PDF or TXT) and receive AI-generated flashcards and quiz questions — all from a secure, multi-user web application.
-
----
+#  AI Study Assistant
 
 ## Features
 
