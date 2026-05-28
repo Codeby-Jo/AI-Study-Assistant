@@ -1,5 +1,7 @@
 #  AI Study Assistant
 
+> **Live URL:** `https://ai-study-assistant-8u3u.onrender.com`
+
 ## Features
 
 - **User auth** — Register, login, JWT access tokens (24hr expiry), bcrypt password hashing
