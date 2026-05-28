@@ -116,7 +116,7 @@ Your app will be live at `https://your-service-name.onrender.com`.
 
 ## LLM Model
 
-Pinned model: `mistralai/mistral-7b-instruct:free` via OpenRouter  
+Pinned model: `mopenai/gpt-oss-120b:free` via OpenRouter  
 The prompt instructs the model to return **strict JSON only** — parsed and validated before being stored in the database.
 
 ---
